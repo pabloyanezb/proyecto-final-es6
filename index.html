@@ -99,9 +99,14 @@
             padding-bottom: 0;
         }
         .back {
+            width: 40px;
+            height: 40px;
             padding: 15px 15px;
             background-size: cover;
             background-repeat: no-repeat;
+        }
+        .btn:focus{
+            box-shadow: none !important;
         }
         .btn-dark {
             padding: 10px 70px;
@@ -114,7 +119,17 @@
             position: relative;
         }
         
-    
+        .select2-hidden-accessible,
+        .select2-hidden-accessible:focus {
+            right: 25px !important;
+            top: auto !important;
+            margin: 50px auto;
+        }
+        
+        .select2-results__option:nth-child(1) {
+            font-weight: 600;
+        }
+        
     </style>
     
 </head>
@@ -129,18 +144,17 @@
                     <div class="mb-4">
                         <h1 class="h2 mb-3 font-weight-bold text-light">CALCULA TU CONSUMO</h1>
                     </div>
-                    <select class="form-control form-control-lg ciudad-origen">
+                    <select class="form-control form-control-lg ciudad-origen "required name="Calcular">
                         <option></option>
                     </select>
-                    <select class="form-control form-control-lg ciudad-destino">
+                    <select class="form-control form-control-lg ciudad-destino "required name="Calcular"> 
                         <option></option>
                     </select>
-                    <select class="form-control form-control-lg vehiculo ">
+                    <select class="form-control form-control-lg vehiculo "required name="Calcular">
                         <option></option>
                     </select>
                 </div>
-
-                <a class="btn btn-lg btn-dark text-light calcular" data-toggle="collapse" data-target=".collapse">Calcular</a>
+                <input type='submit' value='Calcular' class="btn btn-lg btn-dark text-light calcular"  data-target=".collapse"/>
                 
                 <div class="card text-center collapse overlay border-light bg-transparent text-light">
                     <div class="card-body">
@@ -165,8 +179,11 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/js/min/perfect-scrollbar.jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+        <script src="lugares.js"></script>
         
         <script>
+            
+            
             
             $(".ciudad-origen").select2({
                 placeholder: "Ciudad de Origen"
@@ -183,7 +200,7 @@
                 $('.select2-results__options').perfectScrollbar();
             });
             
-           
+            
             class Vehiculo {
                 constructor(){}
                 get_consumo(km) {
@@ -203,7 +220,7 @@
                 }
             }
             const auto = new Auto('Kia Soul', 12.1, 'gasolina'); 
-
+            
             const vehiculos = [
                 {
                     modelo: 'Kia Soul',
@@ -231,63 +248,76 @@
                     $('.vehiculo').append(`<option value='${vehiculo.rendimiento}'>${vehiculo.modelo}</option>`);
                 }
             });
+            
+            // const lugares = {
+                //     antofagasta: { nombre: 'Antofagasta', lat: -23.6465636, lon: -70.4001583},
+                //     laSerena: { nombre: 'La Serena', lat: -29.90453, lon: -71.24894},
+                //     valparaiso: { nombre: 'Valparaíso', lat: -33.048077, lon: -71.612586},
+                //     santiago: { nombre: 'Santiago', lat: -33.452412, lon: -70.668861},
+                //     concepcion: { nombre: 'Concepción', lat: -36.82699, lon: -73.04977},
+                //     valdivia: { nombre: 'Valdivia', lat: -39.8142014, lon: -73.2481018} 
+                // }
+                
+                
+                navigator.geolocation.getCurrentPosition((position) => {
+                    console.log(position);
+                    const latitud = position.coords.latitude;
+                    const longitud = position.coords.longitude;
+                    console.log(latitud);
+                    console.log(longitud);
+                    $('.ciudad-origen').prepend(`<option value='${latitud},${longitud}'> <b>Usar ubicación actual</b> </option>`);
+                });
 
-            const lugares = {
-                antofagasta: { nombre: 'Antofagasta', lat: -23.6465636, lon: -70.4001583},
-                laSerena: { nombre: 'La Serena', lat: -29.90453, lon: -71.24894},
-                valparaiso: { nombre: 'Valparaíso', lat: -33.048077, lon: -71.612586},
-                santiago: { nombre: 'Santiago', lat: -33.452412, lon: -70.668861},
-                concepcion: { nombre: 'Concepción', lat: -36.82699, lon: -73.04977},
-                valdivia: { nombre: 'Valdivia', lat: -39.8142014, lon: -73.2481018} 
-            }
-            
-            
-            $(function() {
-                for (const [key, value] of Object.entries(lugares)){
-                    $('.ciudad-origen, .ciudad-destino').append(`<option value='${key}'>${value.nombre}</option>`);
-                }
-            });
-            
-            $(".js-example-placeholder-single").select2({
-                placeholder: "Select a state",
-                allowClear: true
-            });
-
-            $('.calcular').on('click', function(){
-                event.preventDefault();
-                let origen = $('.ciudad-origen').val();
-                let destino = $('.ciudad-destino').val();
-                for (const [key, value] of Object.entries(lugares)){
-                    if (key == origen){
-                        origen = value;
-                        console.log(origen); 
-                    } else if (key == destino){
-                        destino = value;
-                        console.log(destino);
+                $('.select2-results__option:nth-child(2)').css('font-weight', 'bold');
+                
+                
+                $(function() {
+                    for (const [key, value] of Object.entries(lugares)){
+                        $('.ciudad-origen, .ciudad-destino').append(`<option value='${value["Latitud (Decimal)"]},${value["Longitud (decimal)"]}'>${value.Comuna}</option>`);
+                        
                     }
-                }
+                });
+                
+                
+                $('.calcular').on('click', function(){
+                    
+                    if ($('.ciudad-origen').val() == '' || $('.ciudad-destino').val() == '' || $('.vehiculo').val() == ''){
+                        return;
+                    } else {
+                        $(this).attr('data-toggle', 'collapse');
+                        event.preventDefault();
+                    }
+                    
+                let coord_origen = $('.ciudad-origen').val();
+                let coord_destino = $('.ciudad-destino').val();
+                
                 const rendimiento = parseInt($('.vehiculo').val());
 
                 $(this).toggleClass('btn-dark back');
                 if ( $(this).hasClass('back')){
-                    $(this).html('');
+                    $(this).attr('value', '');
                     $(this).css("background-image", "url(flecha.png)");
                     $('body').addClass('backgroundAnimated');
                 } else {
-                    $(this).html('Calcular');
+                    $(this).attr('value', 'Calcular');
                     $(this).css("background-image", "");
                     $('body').removeClass('backgroundAnimated');
                 }
                 
                 
-                fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origen.lat},${origen.lon}&destinations=${destino.lat},${destino.lon}&key=AIzaSyAlDSRLGoUqLzoFZQlR7wvyRoNdsufoQls`, {})
+                fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${coord_origen}&destinations=${coord_destino}&key=AIzaSyAlDSRLGoUqLzoFZQlR7wvyRoNdsufoQls`, {})
 				.then(function(datos) {
 					return datos.json();
 				})
 				.then(function(datos_json) {
-                    
-                    const [destino] = datos_json.destination_addresses;
-                    const [origen] = datos_json.origin_addresses;
+                    console.log(datos_json);
+                    const array_destino = datos_json.destination_addresses[0].split(',');
+                    const array_origen = datos_json.origin_addresses[0].split(',');
+                    const destino = [...array_destino].slice(-3);
+                    const origen = [...array_origen].slice(-3);
+
+                    // const [destino] = datos_json.destination_addresses;
+                    // const [origen] = datos_json.origin_addresses;
                     const distancia = datos_json.rows[0].elements[0].distance.text;
                     const km = (datos_json.rows[0].elements[0].distance.value)/1000;
                     const tiempo =  datos_json.rows[0].elements[0].duration.text;
