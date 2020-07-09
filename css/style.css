@@ -1,0 +1,77 @@
+*{
+    font-family: 'Kanit', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+body {
+    padding: 0;
+    text-align: center;
+}
+
+.background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.form-signin {
+    position: relative;
+    background-color: #14242649;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 3rem;
+    backdrop-filter: blur(4px);
+    box-shadow: -7px -7px 23px -4px rgba(0, 0, 0, 0.2);
+    max-width: 360px;
+}
+.h2 {
+    padding: 0 30px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+.card-text, tbody, h6 {
+    color: #FDE5BF;
+}
+h6 {
+    margin: -5px 48px;
+    font-style: italic;
+    font-weight: 300;
+}
+b, th {
+    color: white;
+}     
+
+.card {
+    border: 0;
+}
+.card-body {
+    padding-bottom: 0;
+}
+.back {
+    width: 27px;
+    height: 27px;
+    padding: 10px 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.btn:focus{
+    box-shadow: none !important;
+}
+.btn-calcular {
+    font-family: 'Kanit', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 10px 70px;
+    color: rgba(255, 255, 255, 0.897);
+    
+    background: linear-gradient(90deg, rgba(183,136,118,1) 0%, rgba(251,219,181,0.8183648459383753) 100%);
+    border-color: #d9967e50;
+}
+.btn-calcular:hover {
+    border-color: rgba(192, 192, 192, 0.486);
+    background-color: white;
+    color: white;  
+}

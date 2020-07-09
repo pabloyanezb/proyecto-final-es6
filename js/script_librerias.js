@@ -1,3 +1,18 @@
+// Inicializar el select2
+$(".ciudad-destino").select2({
+    placeholder: "Ciudad de Destino",
+    matcher: modelMatcher
+  
+});
+$(".vehiculo").select2({
+    placeholder: "Vehículo",
+    minimumResultsForSearch: Infinity, // Desactiva la búsqueda
+    matcher: modelMatcher
+});
+// Inicializar perfectScrollbar
+$('select').on("select2:open", () => $('.select2-results__options').perfectScrollbar());
+
+// Mejorar la búsqueda de select2
 function modelMatcher(params, data) {
     data.parentText = data.parentText || "";
 

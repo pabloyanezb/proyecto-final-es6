@@ -1,0 +1,64 @@
+.select2-results__options {
+    position: relative;
+}
+.select2 {
+    margin-bottom: 20px;
+    width:100%!important;
+}
+.select2-selection__rendered {
+    line-height: 45px !important;
+}
+.select2-container 
+.select2-selection--single {
+    height: 50px !important;
+    text-align: left;
+}
+.select2-selection__arrow {
+    height: 48px !important;
+}
+.select2-results__option{
+    text-align: left !important;
+    position: relative;
+    padding: 5px;
+}
+.select2-hidden-accessible,
+.select2-hidden-accessible:focus {
+    right: 25px !important;
+    top: auto !important;
+    margin: 50px auto;
+}
+.select2-container--default 
+.select2-results__option--highlighted[aria-selected] {
+    background-color: #8c6c65c4;
+    color:white
+}
+.select2-container--default 
+.select2-selection--single{
+    background-color: #3c595650;
+    color: white !important;
+}
+.select2-container--default 
+.select2-selection--single 
+.select2-selection__rendered {
+    color: white;
+    line-height: 28px;
+}
+.select2-container--default 
+.select2-selection--single 
+.select2-selection__placeholder {
+    color: white;
+}
+div.ps-scrollbar-y {
+    height: 50px !important;
+    background-color: #FDE5BF;
+}
+.ps-container>
+.ps-scrollbar-y-rail>
+.ps-scrollbar-y {
+    background-color: #2E5959;
+}     
+.ps-container>
+.ps-scrollbar-y-rail>
+.ps-scrollbar-y:hover {
+    background-color: #2E5959 !important;
+}   

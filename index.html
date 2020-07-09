@@ -1,145 +1,34 @@
 <!DOCTYPE html>
-<!-- saved from url=(0059)https://getbootstrap.com/docs/4.5/examples/floating-labels/ -->
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<html lang="es">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Calcula tu Consumo | Proyecto es6</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <!-- Favicons -->
+        <title>Calcula tu Consumo | Proyecto es6</title>
 
-    <link rel="icon" href="favicon.png">
-    <meta name="theme-color" content="#563d7c">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/css/perfect-scrollbar.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-    
-    <link rel="stylesheet" href="index_files/floating-labels.css">
+        <!-- Favicons -->
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-            }
-        }
-       
-        @keyframes fadeIt {
-            0%   { background-color: #FFFFFF; }
-            100% { background-color: #333333b2; }
-        }
-
-        .backgroundAnimated {    
-            background-image:none !important;
-            animation: fadeIt 1s ease-in; 
-            background-color: #333333b2;
-        }
-        body {
-            padding: 0;
-            text-align: center;
-        }
-        .background {
-            position: relative;;
-            height: 100%;
-            width: 100%;
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .form-signin {
-            background-color: rgba(240, 240, 240, 0.143);
-            border-radius: 10px;
-            padding: 25px;
-            margin-top: 3rem;
-            backdrop-filter: blur(5px);
-            box-shadow: -7px -7px 23px -4px rgba(0, 0, 0, 0.2);
-            max-width: 360px;
-        }
-        .ruta {
-            width: 115px;
-            height: 115px;
-        }      
-        .select2 {
-            margin-bottom: 20px;
-            width:100%!important;
-        }
-        .select2-selection__rendered {
-            line-height: 45px !important;
-        }
-        .select2-container .select2-selection--single {
-            height: 50px !important;
-            text-align: left;
-        }
-        .select2-selection__arrow {
-            height: 48px !important;
-        }
-        .select2-results__option{
-            text-align: left !important;
-        }
-        .card {
-            border: 0;
-        }
-        .card-body {
-            padding-bottom: 0;
-        }
-        .back {
-            width: 40px;
-            height: 40px;
-            padding: 15px 15px;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-        .btn:focus{
-            box-shadow: none !important;
-        }
-        .btn-dark {
-            padding: 10px 70px;
-        }
-        .h2 {
-            padding: 0 30px;
-        }
-
-        .select2-results__options {
-            position: relative;
-        }
+        <link rel="icon" href="img/favicon.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/css/perfect-scrollbar.min.css" />
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/estilos_librerias.css">
+        <link rel="stylesheet" href="css/style.css">
         
-        .select2-hidden-accessible,
-        .select2-hidden-accessible:focus {
-            right: 25px !important;
-            top: auto !important;
-            margin: 50px auto;
-        }
-
-        div.ps-scrollbar-y {
-            height: 20px !important;
-        }
-        
-        
-    </style>
-    
-</head>
-
-
-
+    </head>
     <body>
         <div class="background">
             
-           <form class="form-signin justify-content-left">
+            <form class="form-signin justify-content-left container">
                 <div class="collapse show overlay-back" id="collapseExample">
                     <div class="mb-4">
-                        <h1 class="h2 mb-3 font-weight-bold text-light">CALCULA TU CONSUMO</h1>
+                        <h1 class="h2 text-light">CALCULA TU CONSUMO</h1>
+                        <h6>Averigua cuanto necesitarás de combustible</h6>
                     </div>
                     <select class="form-control form-control-lg ciudad-origen "required name="Calcular">
                         <!-- <optgroup label=" Arica y Parinacota"></optgroup>
@@ -182,23 +71,14 @@
                         <option></option>
                     </select>
                 </div>
-                <input type='submit' value='Calcular' class="btn btn-lg btn-dark text-light calcular"  data-target=".collapse"/>
+                <input type='submit' value='Calcular' class="btn btn-lg btn-calcular calcular"  data-target=".collapse"/>
                 
                 <div class="card text-center collapse overlay border-light bg-transparent text-light">
-                    <div class="card-body">
-                                          
-                    </div>
+                    <div class="card-body"></div>
                 </div>
             </form> 
             
         </div>
-        
-        
-        
-       
-        
-
-        
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -208,196 +88,8 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/js/min/perfect-scrollbar.jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
         <script src='https://cdn.jsdelivr.net/lodash/4.17.2/lodash.min.js'></script>
-        <script src="lugares.js"></script>
-        <script src="select2_modelMatcher.js"></script>
-        
-        <script>
-
-            
-            $(".ciudad-destino").select2({
-                placeholder: "Ciudad de Destino",
-                matcher: modelMatcher
-              
-            });
-            $(".vehiculo").select2({
-                placeholder: "Vehículo",
-                minimumResultsForSearch: Infinity,
-                matcher: modelMatcher
-            });
-            
-            $('select').on("select2:open", function () {
-                $('.select2-results__options').perfectScrollbar();
-            });
-            
-            class Vehiculo {
-                constructor(){}
-                get_consumo(km) {
-                    return false;
-                }
-            }
-            class Auto extends Vehiculo {
-                constructor(modelo, rendimiento, propulsion) {
-                    super();
-                    this.modelo = modelo;
-                    this.rendimiento = rendimiento;
-                    this.propulsion = propulsion;
-                }
-                get_consumo(km = 0) {
-                    let consumo = km / this.rendimiento;
-                    consumo = Math.round(consumo * 10)/ 10;
-                }
-            }
-            const auto = new Auto('Kia Soul', 12.1, 'gasolina'); 
-            
-            const vehiculos = [
-                {
-                    modelo: 'Kia Soul',
-                    rendimiento: 12.1,
-                    propulsion: 'gasolina'
-                },
-                {
-                    modelo: 'Mitsubishi L200',
-                    rendimiento: 10,
-                    propulsion: 'diesel'
-                },
-                {
-                    modelo: 'Yamaha FZ16',
-                    rendimiento: 26.5,
-                    propulsion: 'gasolina'
-                },
-                {
-                    modelo: 'Volvo FH',
-                    rendimiento: 5,
-                    propulsion: 'diesel'
-                }    
-            ]
-            $(function() {
-                for (const vehiculo of vehiculos){
-                    $('.vehiculo').append(`<option value='${vehiculo.rendimiento}'>${vehiculo.modelo}</option>`);
-                }
-            });
-            
-         
-            navigator.geolocation.getCurrentPosition(position => {   
-                const latitud = position.coords.latitude;
-                const longitud = position.coords.longitude;
-                
-                $('.ciudad-origen').prepend(`<option value='${latitud},${longitud}'selected="selected"> <b>Ubicación actual</b> </option>`);
-                $(".ciudad-origen").select2({
-                    matcher: modelMatcher
-                });
-            });
-           
-            const lugares_por_region = _.groupBy(lugares, lugar => lugar['Región']);
-            console.log(lugares_por_region)
-           
-                        
-            for (const region in lugares_por_region){
-                let value = lugares_por_region[region];
-                $('.ciudad-origen, .ciudad-destino').append(`<optgroup label="${region}"></optgroup>`);
-                for (const comuna of value){
-                  $(`optgroup[label="${region}"]`).append(`<option value='${comuna['Latitud (Decimal)']},${comuna['Longitud (decimal)']}'>${comuna.Comuna}</option>`);  
-                }
-            }
-            $('select optgroup').each(function(index,elmt){
-                result = $(elmt).find("option").toArray().sort((option1, option2) => option1.innerHTML.localeCompare(option2.innerHTML));
-                
-                $(result).appendTo(elmt);
-                    
-            });
-        
-            
-                
-            $('.calcular').on('click', function(){
-                    
-                if ($('.ciudad-origen').val() == '' || $('.ciudad-destino').val() == '' || $('.vehiculo').val() == ''){
-                    return;
-                } else {
-                    $(this).attr('data-toggle', 'collapse');
-                    event.preventDefault();
-                }
-                    
-                let coord_origen = $('.ciudad-origen').val();
-                let coord_destino = $('.ciudad-destino').val();
-                
-                const rendimiento = parseInt($('.vehiculo').val());
-
-                $(this).toggleClass('btn-dark back');
-                if ( $(this).hasClass('back')){
-                    $(this).attr('value', '');
-                    $(this).css("background-image", "url(flecha.png)");
-                    
-                } else {
-                    $(this).attr('value', 'Calcular');
-                    $(this).css("background-image", "");
-                    
-
-                }
-                
-                
-                fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${coord_origen}&destinations=${coord_destino}&key=AIzaSyAlDSRLGoUqLzoFZQlR7wvyRoNdsufoQls`, {})
-				.then(function(datos) {
-					return datos.json();
-				})
-				.then(function(datos_json) {
-                    console.log(datos_json);
-                    const array_destino = datos_json.destination_addresses[0].split(',');
-                    const array_origen = datos_json.origin_addresses[0].split(',');
-                    const destino = [...array_destino].slice(-3);
-                    const origen = [...array_origen].slice(-3);
-
-                    // const [destino] = datos_json.destination_addresses;
-                    // const [origen] = datos_json.origin_addresses;
-                    const distancia = datos_json.rows[0].elements[0].distance.text;
-                    const km = (datos_json.rows[0].elements[0].distance.value)/1000;
-                    const tiempo =  datos_json.rows[0].elements[0].duration.text;
-                    const consumo = km / rendimiento;
-                    $('.card-body').html(`<p class="card-text">Viaje desde <b>${origen}</b> hasta <b>${destino} </b></p>
-                                            <table class="table table-borderless text-light">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Distancia</th>
-                                                        <th scope="col">Tiempo</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>${distancia}</td>
-                                                        <td>${tiempo}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th colspan='2'>Vehículo</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan='2'>${$('.vehiculo option:selected').text()}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th colspan='2'>Consumo</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan='2'>${Math.round(consumo * 10)/ 10} litros </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>`);
-				})
-				.catch(function(error) {
-					console.log(error);
-                });
-                
-            })
-
-            $(function() {
-                $('optgroup').each(function() {
-                    var optgroup = this;
-                    $( 'option', this ).sort(function(a,b) {
-                    return $(a).text() > $(b).text();
-                        }).appendTo(optgroup);
-                });
-            });
-
-                                   
-            
-                
-        </script>
+        <script src="js/lugares.js"></script>
+        <script src="js/script_librerias.js"></script>
+        <script src="js/script.js"></script>
     </body>	
 </html>
