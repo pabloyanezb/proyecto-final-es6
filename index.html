@@ -9,15 +9,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Proyecto Final ES6</title>
+    <title>Calcula tu Consumo | Proyecto es6</title>
+
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
-    <link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon.ico">
-    <meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
+
+    <link rel="icon" href="favicon.png">
     <meta name="theme-color" content="#563d7c">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/css/perfect-scrollbar.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
@@ -125,10 +121,11 @@
             top: auto !important;
             margin: 50px auto;
         }
-        
-        .select2-results__option:nth-child(1) {
-            font-weight: 600;
+
+        div.ps-scrollbar-y {
+            height: 20px !important;
         }
+        
         
     </style>
     
@@ -145,10 +142,41 @@
                         <h1 class="h2 mb-3 font-weight-bold text-light">CALCULA TU CONSUMO</h1>
                     </div>
                     <select class="form-control form-control-lg ciudad-origen "required name="Calcular">
-                        <option></option>
+                        <!-- <optgroup label=" Arica y Parinacota"></optgroup>
+                        <optgroup label=" Tarapacá"></optgroup>
+                        <optgroup label=" Antofagasta"></optgroup>
+                        <optgroup label=" Atacama"></optgroup>
+                        <optgroup label=" Coquimbo"></optgroup>
+                        <optgroup label=" Valparaíso"></optgroup>
+                        <optgroup label=" Metropolitana de Santiago"></optgroup>
+                        <optgroup label=" Lib. Gral. Bernardo O' Higgins"></optgroup>
+                        <optgroup label=" Maule"></optgroup>
+                        <optgroup label=" Ñuble"></optgroup>
+                        <optgroup label=" Biobío"></optgroup>
+                        <optgroup label=" La Araucanía"></optgroup>
+                        <optgroup label=" Los Ríos"></optgroup>
+                        <optgroup label=" Los Lagos"></optgroup>
+                        <optgroup label=" Aysén del Gral. C. Ibáñez del Campo"></optgroup>
+                        <optgroup label=" Magallanes y Antártica Chilena"></optgroup> -->
                     </select>
                     <select class="form-control form-control-lg ciudad-destino "required name="Calcular"> 
                         <option></option>
+                        <!-- <optgroup label=" Arica y Parinacota"></optgroup>
+                        <optgroup label=" Tarapacá"></optgroup>
+                        <optgroup label=" Antofagasta"></optgroup>
+                        <optgroup label=" Atacama"></optgroup>
+                        <optgroup label=" Coquimbo"></optgroup>
+                        <optgroup label=" Valparaíso"></optgroup>
+                        <optgroup label=" Metropolitana de Santiago"></optgroup>
+                        <optgroup label=" Lib. Gral. Bernardo O' Higgins"></optgroup>
+                        <optgroup label=" Maule"></optgroup>
+                        <optgroup label=" Ñuble"></optgroup>
+                        <optgroup label=" Biobío"></optgroup>
+                        <optgroup label=" La Araucanía"></optgroup>
+                        <optgroup label=" Los Ríos"></optgroup>
+                        <optgroup label=" Los Lagos"></optgroup>
+                        <optgroup label=" Aysén del Gral. C. Ibáñez del Campo"></optgroup>
+                        <optgroup label=" Magallanes y Antártica Chilena"></optgroup> -->
                     </select>
                     <select class="form-control form-control-lg vehiculo "required name="Calcular">
                         <option></option>
@@ -179,27 +207,27 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/js/min/perfect-scrollbar.jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+        <script src='https://cdn.jsdelivr.net/lodash/4.17.2/lodash.min.js'></script>
         <script src="lugares.js"></script>
+        <script src="select2_modelMatcher.js"></script>
         
         <script>
+
             
-            
-            
-            $(".ciudad-origen").select2({
-                placeholder: "Ciudad de Origen"
-            });
             $(".ciudad-destino").select2({
-                placeholder: "Ciudad de Destino"
+                placeholder: "Ciudad de Destino",
+                matcher: modelMatcher
+              
             });
             $(".vehiculo").select2({
                 placeholder: "Vehículo",
-                minimumResultsForSearch: Infinity
+                minimumResultsForSearch: Infinity,
+                matcher: modelMatcher
             });
             
             $('select').on("select2:open", function () {
                 $('.select2-results__options').perfectScrollbar();
             });
-            
             
             class Vehiculo {
                 constructor(){}
@@ -229,7 +257,7 @@
                 },
                 {
                     modelo: 'Mitsubishi L200',
-                    rendimiento: 13.5,
+                    rendimiento: 10,
                     propulsion: 'diesel'
                 },
                 {
@@ -239,7 +267,7 @@
                 },
                 {
                     modelo: 'Volvo FH',
-                    rendimiento: 3,
+                    rendimiento: 5,
                     propulsion: 'diesel'
                 }    
             ]
@@ -249,44 +277,45 @@
                 }
             });
             
-            // const lugares = {
-                //     antofagasta: { nombre: 'Antofagasta', lat: -23.6465636, lon: -70.4001583},
-                //     laSerena: { nombre: 'La Serena', lat: -29.90453, lon: -71.24894},
-                //     valparaiso: { nombre: 'Valparaíso', lat: -33.048077, lon: -71.612586},
-                //     santiago: { nombre: 'Santiago', lat: -33.452412, lon: -70.668861},
-                //     concepcion: { nombre: 'Concepción', lat: -36.82699, lon: -73.04977},
-                //     valdivia: { nombre: 'Valdivia', lat: -39.8142014, lon: -73.2481018} 
-                // }
+         
+            navigator.geolocation.getCurrentPosition(position => {   
+                const latitud = position.coords.latitude;
+                const longitud = position.coords.longitude;
                 
-                
-                navigator.geolocation.getCurrentPosition((position) => {
-                    console.log(position);
-                    const latitud = position.coords.latitude;
-                    const longitud = position.coords.longitude;
-                    console.log(latitud);
-                    console.log(longitud);
-                    $('.ciudad-origen').prepend(`<option value='${latitud},${longitud}'> <b>Usar ubicación actual</b> </option>`);
+                $('.ciudad-origen').prepend(`<option value='${latitud},${longitud}'selected="selected"> <b>Ubicación actual</b> </option>`);
+                $(".ciudad-origen").select2({
+                    matcher: modelMatcher
                 });
-
-                $('.select2-results__option:nth-child(2)').css('font-weight', 'bold');
-                
-                
-                $(function() {
-                    for (const [key, value] of Object.entries(lugares)){
-                        $('.ciudad-origen, .ciudad-destino').append(`<option value='${value["Latitud (Decimal)"]},${value["Longitud (decimal)"]}'>${value.Comuna}</option>`);
+            });
+           
+            const lugares_por_region = _.groupBy(lugares, lugar => lugar['Región']);
+            console.log(lugares_por_region)
+           
                         
-                    }
-                });
+            for (const region in lugares_por_region){
+                let value = lugares_por_region[region];
+                $('.ciudad-origen, .ciudad-destino').append(`<optgroup label="${region}"></optgroup>`);
+                for (const comuna of value){
+                  $(`optgroup[label="${region}"]`).append(`<option value='${comuna['Latitud (Decimal)']},${comuna['Longitud (decimal)']}'>${comuna.Comuna}</option>`);  
+                }
+            }
+            $('select optgroup').each(function(index,elmt){
+                result = $(elmt).find("option").toArray().sort((option1, option2) => option1.innerHTML.localeCompare(option2.innerHTML));
                 
-                
-                $('.calcular').on('click', function(){
+                $(result).appendTo(elmt);
                     
-                    if ($('.ciudad-origen').val() == '' || $('.ciudad-destino').val() == '' || $('.vehiculo').val() == ''){
-                        return;
-                    } else {
-                        $(this).attr('data-toggle', 'collapse');
-                        event.preventDefault();
-                    }
+            });
+        
+            
+                
+            $('.calcular').on('click', function(){
+                    
+                if ($('.ciudad-origen').val() == '' || $('.ciudad-destino').val() == '' || $('.vehiculo').val() == ''){
+                    return;
+                } else {
+                    $(this).attr('data-toggle', 'collapse');
+                    event.preventDefault();
+                }
                     
                 let coord_origen = $('.ciudad-origen').val();
                 let coord_destino = $('.ciudad-destino').val();
@@ -297,11 +326,12 @@
                 if ( $(this).hasClass('back')){
                     $(this).attr('value', '');
                     $(this).css("background-image", "url(flecha.png)");
-                    $('body').addClass('backgroundAnimated');
+                    
                 } else {
                     $(this).attr('value', 'Calcular');
                     $(this).css("background-image", "");
-                    $('body').removeClass('backgroundAnimated');
+                    
+
                 }
                 
                 
@@ -356,6 +386,14 @@
                 
             })
 
+            $(function() {
+                $('optgroup').each(function() {
+                    var optgroup = this;
+                    $( 'option', this ).sort(function(a,b) {
+                    return $(a).text() > $(b).text();
+                        }).appendTo(optgroup);
+                });
+            });
 
                                    
             
